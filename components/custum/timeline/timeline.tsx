@@ -2,6 +2,7 @@
 
 import { useEffect, useRef, useState } from "react";
 import Link from "next/link";
+import { Eye } from "lucide-react";
 import { eventos } from "@/lib/eventos";
 
 export default function Timeline() {
@@ -92,8 +93,8 @@ export default function Timeline() {
                         <p className="text-zinc-600 dark:text-zinc-400 leading-relaxed">
                           {evento.descricao}
                         </p>
-                        <div className="mt-4 text-sm text-blue-600 dark:text-blue-400 font-medium">
-                          Ver detalhes →
+                        <div className="mt-4 flex justify-end">
+                          <Eye className="w-5 h-5 text-blue-600 dark:text-blue-400" />
                         </div>
                       </div>
                     </Link>

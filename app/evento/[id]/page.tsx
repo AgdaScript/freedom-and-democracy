@@ -1,6 +1,7 @@
 import { notFound } from "next/navigation";
 import Link from "next/link";
 import Image from "next/image";
+import { X } from "lucide-react";
 import { getEventoById } from "@/lib/eventos";
 
 interface PageProps {
@@ -21,12 +22,12 @@ export default async function EventoPage({ params }: PageProps) {
     <main className="min-h-screen bg-white dark:bg-black">
       {/* Header com botão de voltar */}
       <div className="w-full py-6 px-4 border-b border-zinc-200 dark:border-zinc-800">
-        <div className="max-w-7xl mx-auto">
+        <div className="max-w-7xl mx-auto flex justify-end">
           <Link
             href="/#timeline"
-            className="inline-flex items-center text-blue-600 dark:text-blue-400 hover:text-blue-700 dark:hover:text-blue-300 transition-colors"
+            className="inline-flex items-center justify-center w-10 h-10 text-blue-600 dark:text-blue-400 hover:text-blue-700 dark:hover:text-blue-300 hover:bg-zinc-100 dark:hover:bg-zinc-900 rounded-full transition-colors"
           >
-            ← Voltar para Timeline
+            <X className="w-6 h-6" />
           </Link>
         </div>
       </div>
