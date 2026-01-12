@@ -1,14 +1,14 @@
 export default function Hero() {
   return (
-    <section className="relative w-full h-screen overflow-hidden">
+    <section className="relative w-full h-screen overflow-hidden m-0 p-0">
       {/* Vídeo de fundo */}
-      <div className="absolute inset-0 w-full h-full">
+      <div className="absolute inset-0 w-full h-full overflow-hidden">
         <video
           autoPlay
           loop
           muted
           playsInline
-          className="w-full h-full object-cover"
+          className="h-full w-[150%] object-cover absolute left-1/2 -translate-x-1/2"
         >
           <source
             src="/video/video-reportagem-13-de-janeiro.mp4"
