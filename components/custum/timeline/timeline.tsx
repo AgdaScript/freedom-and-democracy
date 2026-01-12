@@ -1,55 +1,10 @@
 "use client";
 
 import { useEffect, useRef, useState } from "react";
+import Link from "next/link";
+import { eventos } from "@/lib/eventos";
 
 export default function Timeline() {
-  const eventos = [
-    {
-      ano: "1975",
-      titulo: "Independência de Cabo Verde",
-      descricao: "Cabo Verde conquista a independência de Portugal em 5 de julho, estabelecendo-se como uma república unipartidária sob o Partido Africano da Independência de Cabo Verde (PAICV).",
-    },
-    {
-      ano: "1990",
-      titulo: "Início da Transição Democrática",
-      descricao: "Início do processo de abertura política e transição para um sistema multipartidário, com a aprovação da nova Constituição que estabelece o regime democrático.",
-    },
-    {
-      ano: "1991",
-      titulo: "Primeiras Eleições Multipartidárias",
-      descricao: "Realização das primeiras eleições livres e democráticas, marcando o fim do regime unipartidário. O Movimento para a Democracia (MpD) vence as eleições legislativas e presidenciais.",
-    },
-    {
-      ano: "1992",
-      titulo: "Nova Constituição Democrática",
-      descricao: "Promulgação da nova Constituição que consolida o regime democrático, estabelecendo a separação de poderes, direitos fundamentais e o sistema multipartidário.",
-    },
-    {
-      ano: "2001",
-      titulo: "Alternância de Poder",
-      descricao: "O PAICV retorna ao poder após vencer as eleições, demonstrando a consolidação da alternância democrática e a maturidade do sistema político cabo-verdiano.",
-    },
-    {
-      ano: "2011",
-      titulo: "Reconhecimento Internacional",
-      descricao: "Cabo Verde é reconhecido como um dos países mais democráticos de África, com eleições regulares e pacíficas, e uma forte tradição de respeito pelos direitos humanos.",
-    },
-    {
-      ano: "2016",
-      titulo: "Consolidação Democrática",
-      descricao: "O MpD retorna ao poder através de eleições democráticas, reforçando o padrão de alternância pacífica de poder que caracteriza a democracia cabo-verdiana.",
-    },
-    {
-      ano: "2021",
-      titulo: "Eleições Presidenciais",
-      descricao: "Realização de eleições presidenciais livres e justas, com José Maria Neves sendo eleito Presidente da República, continuando a tradição democrática do país.",
-    },
-    {
-      ano: "2024",
-      titulo: "Democracia Consolidada",
-      descricao: "Cabo Verde mantém-se como referência democrática em África, com instituições sólidas, eleições regulares e um sistema político estável e transparente.",
-    },
-  ];
 
   const [visibleItems, setVisibleItems] = useState<Set<number>>(new Set());
   const itemRefs = useRef<(HTMLDivElement | null)[]>([]);
@@ -123,20 +78,25 @@ export default function Timeline() {
                   {/* Conteúdo do evento */}
                   <div
                     className={`ml-16 md:ml-0 md:w-1/2 ${
-                      index % 2 === 0 ? "md:pr-8 md:text-right" : "md:ml-auto md:pl-8"
+                      evento.lado === "esquerda" ? "md:pr-8 md:text-right" : "md:ml-auto md:pl-8"
                     }`}
                   >
-                    <div className="bg-zinc-50 dark:bg-zinc-900 p-6 rounded-lg shadow-md border border-zinc-200 dark:border-zinc-800">
-                      <div className="text-2xl font-bold text-blue-600 dark:text-blue-400 mb-2">
-                        {evento.ano}
+                    <Link href={`/evento/${evento.id}`}>
+                      <div className="bg-zinc-50 dark:bg-zinc-900 p-6 rounded-lg shadow-md border border-zinc-200 dark:border-zinc-800 hover:shadow-lg hover:scale-105 transition-all duration-300 cursor-pointer">
+                        <div className="text-2xl font-bold text-blue-600 dark:text-blue-400 mb-2">
+                          {evento.ano}
+                        </div>
+                        <h3 className="text-xl font-semibold mb-3 text-black dark:text-white">
+                          {evento.titulo}
+                        </h3>
+                        <p className="text-zinc-600 dark:text-zinc-400 leading-relaxed">
+                          {evento.descricao}
+                        </p>
+                        <div className="mt-4 text-sm text-blue-600 dark:text-blue-400 font-medium">
+                          Ver detalhes →
+                        </div>
                       </div>
-                      <h3 className="text-xl font-semibold mb-3 text-black dark:text-white">
-                        {evento.titulo}
-                      </h3>
-                      <p className="text-zinc-600 dark:text-zinc-400 leading-relaxed">
-                        {evento.descricao}
-                      </p>
-                    </div>
+                    </Link>
                   </div>
                 </div>
               );
